@@ -1,0 +1,15 @@
+<div>
+    <div class="title">
+        <h1>{{question}}</h1>
+    </div>
+    <div>
+        <div>
+            @for (answer of answers; track $index) {
+            <div class="radiobuttons">
+                <input class="radiobtn" type="radio" name="radio" value={{answer.items}} (change)="onRadioBtnChange($event)">
+                <label for="">{{answer.items}}</label>
+            </div>
+            }
+        </div>
+    </div>
+</div>
