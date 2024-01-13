@@ -19,7 +19,7 @@ export class ProblemRenderComponent implements OnInit {
   problemData: Problem[] = [];
   currentNo: number = 0;
   answers : any = [];
-  tempArray:any = [];
+  tempArray:any = {};
 
   constructor(private appService: AppService) {}
 
@@ -33,11 +33,15 @@ export class ProblemRenderComponent implements OnInit {
     this.problem_type = data.type;
   }
 
-  currentNoChange(): void {
+  async currentNoChange() {
+    await this.answers.push(this.tempArray);
     this.currentNo += 1;
-    this.getProblemData();
-    this.answers.push(this.tempArray);
-    console.log("answers", this.answers);
+    if (this.currentNo === 5) {
+      console.log(this.answers)
+      await alert(await JSON.stringify(this.answers))
+      return
+    }
+    await this.getProblemData();
   }
 
   receiveMessage($data: any) {

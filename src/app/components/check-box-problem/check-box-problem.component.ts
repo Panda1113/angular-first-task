@@ -19,7 +19,8 @@ export class CheckBoxProblemComponent implements OnInit, OnChanges {
 
   question: string = '';
   answers: any = [];
-  response:any = [];
+  response:any = {};
+  tempArray:any = [];
   
   constructor(private _formBuilder: FormBuilder) {
 
@@ -37,11 +38,15 @@ export class CheckBoxProblemComponent implements OnInit, OnChanges {
 
   handleChange(event:Event){
     const target = event.target as HTMLInputElement;
-    console.log(event);
     this.response.question = this.question;
-    this.response.answer = [...this.response.answer ? this.response.answer : [], target.value];
-    const test = this.response.answers?.filter((item:any)=>console.log(item))
-    console.log(test);
+    const index = this.tempArray.indexOf(target.value);
 
+    if (index !== -1) {
+      this.tempArray.splice(index, 1);
+    }else{
+      this.tempArray.push(target.value);
+    }
+    this.response.answer = this.tempArray;
+    this.submitFuc.emit(this.response);
   }
 }

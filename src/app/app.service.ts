@@ -55,4 +55,8 @@ export class AppService {
   getProblemData(currentNo:number): any[] {
     return this.problemData[currentNo];
   }
+
+  getAllProblemData(){
+    return this.problemData;
+  }
 }

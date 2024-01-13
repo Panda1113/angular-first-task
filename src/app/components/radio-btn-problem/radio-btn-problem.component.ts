@@ -24,7 +24,7 @@ export class RadioBtnProblemComponent implements OnInit, OnChanges {
 
   question: string = '';
   answers: any = [];
-  response:any = [];
+  response:any = {};
 
   ngOnChanges(changes: SimpleChanges): void {
     const _data: any = this.data;
